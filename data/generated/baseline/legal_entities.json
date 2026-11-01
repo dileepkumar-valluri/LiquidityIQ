@@ -1,0 +1,302 @@
+[
+    {
+        "entity_id": "ENT-000001",
+        "entity_name": "Synthetic Corporation 001",
+        "registration_number": "SYN-REG-000001",
+        "country": "United Kingdom",
+        "base_currency": "SGD",
+        "status": "ACTIVE",
+        "created_at": "2026-11-01T23:41:20.930021+05:30",
+        "updated_at": "2026-11-01T23:41:20.930021+05:30"
+    },
+    {
+        "entity_id": "ENT-000002",
+        "entity_name": "Synthetic Corporation 002",
+        "registration_number": "SYN-REG-000002",
+        "country": "United States",
+        "base_currency": "USD",
+        "status": "ACTIVE",
+        "created_at": "2026-11-01T23:41:20.930021+05:30",
+        "updated_at": "2026-11-01T23:41:20.930021+05:30"
+    },
+    {
+        "entity_id": "ENT-000003",
+        "entity_name": "Synthetic Corporation 003",
+        "registration_number": "SYN-REG-000003",
+        "country": "United States",
+        "base_currency": "USD",
+        "status": "ACTIVE",
+        "created_at": "2026-11-01T23:41:20.930021+05:30",
+        "updated_at": "2026-11-01T23:41:20.930021+05:30"
+    },
+    {
+        "entity_id": "ENT-000004",
+        "entity_name": "Synthetic Corporation 004",
+        "registration_number": "SYN-REG-000004",
+        "country": "India",
+        "base_currency": "USD",
+        "status": "ACTIVE",
+        "created_at": "2026-11-01T23:41:20.930021+05:30",
+        "updated_at": "2026-11-01T23:41:20.930021+05:30"
+    },
+    {
+        "entity_id": "ENT-000005",
+        "entity_name": "Synthetic Corporation 005",
+        "registration_number": "SYN-REG-000005",
+        "country": "Singapore",
+        "base_currency": "GBP",
+        "status": "ACTIVE",
+        "created_at": "2026-11-01T23:41:20.930021+05:30",
+        "updated_at": "2026-11-01T23:41:20.930021+05:30"
+    },
+    {
+        "entity_id": "ENT-000006",
+        "entity_name": "Synthetic Corporation 006",
+        "registration_number": "SYN-REG-000006",
+        "country": "Singapore",
+        "base_currency": "SGD",
+        "status": "ACTIVE",
+        "created_at": "2026-11-01T23:41:20.930021+05:30",
+        "updated_at": "2026-11-01T23:41:20.930021+05:30"
+    },
+    {
+        "entity_id": "ENT-000007",
+        "entity_name": "Synthetic Corporation 007",
+        "registration_number": "SYN-REG-000007",
+        "country": "Germany",
+        "base_currency": "SGD",
+        "status": "ACTIVE",
+        "created_at": "2026-11-01T23:41:20.930021+05:30",
+        "updated_at": "2026-11-01T23:41:20.930021+05:30"
+    },
+    {
+        "entity_id": "ENT-000008",
+        "entity_name": "Synthetic Corporation 008",
+        "registration_number": "SYN-REG-000008",
+        "country": "Singapore",
+        "base_currency": "GBP",
+        "status": "ACTIVE",
+        "created_at": "2026-11-01T23:41:20.930021+05:30",
+        "updated_at": "2026-11-01T23:41:20.930021+05:30"
+    },
+    {
+        "entity_id": "ENT-000009",
+        "entity_name": "Synthetic Corporation 009",
+        "registration_number": "SYN-REG-000009",
+        "country": "Germany",
+        "base_currency": "SGD",
+        "status": "ACTIVE",
+        "created_at": "2026-11-01T23:41:20.930021+05:30",
+        "updated_at": "2026-11-01T23:41:20.930021+05:30"
+    },
+    {
+        "entity_id": "ENT-000010",
+        "entity_name": "Synthetic Corporation 010",
+        "registration_number": "SYN-REG-000010",
+        "country": "Singapore",
+        "base_currency": "SGD",
+        "status": "ACTIVE",
+        "created_at": "2026-11-01T23:41:20.930021+05:30",
+        "updated_at": "2026-11-01T23:41:20.930021+05:30"
+    },
+    {
+        "entity_id": "ENT-000011",
+        "entity_name": "Synthetic Corporation 011",
+        "registration_number": "SYN-REG-000011",
+        "country": "Germany",
+        "base_currency": "INR",
+        "status": "ACTIVE",
+        "created_at": "2026-11-01T23:41:20.930021+05:30",
+        "updated_at": "2026-11-01T23:41:20.930021+05:30"
+    },
+    {
+        "entity_id": "ENT-000012",
+        "entity_name": "Synthetic Corporation 012",
+        "registration_number": "SYN-REG-000012",
+        "country": "Germany",
+        "base_currency": "EUR",
+        "status": "ACTIVE",
+        "created_at": "2026-11-01T23:41:20.930021+05:30",
+        "updated_at": "2026-11-01T23:41:20.930021+05:30"
+    },
+    {
+        "entity_id": "ENT-000013",
+        "entity_name": "Synthetic Corporation 013",
+        "registration_number": "SYN-REG-000013",
+        "country": "United States",
+        "base_currency": "GBP",
+        "status": "ACTIVE",
+        "created_at": "2026-11-01T23:41:20.930021+05:30",
+        "updated_at": "2026-11-01T23:41:20.930021+05:30"
+    },
+    {
+        "entity_id": "ENT-000014",
+        "entity_name": "Synthetic Corporation 014",
+        "registration_number": "SYN-REG-000014",
+        "country": "Germany",
+        "base_currency": "INR",
+        "status": "ACTIVE",
+        "created_at": "2026-11-01T23:41:20.930021+05:30",
+        "updated_at": "2026-11-01T23:41:20.930021+05:30"
+    },
+    {
+        "entity_id": "ENT-000015",
+        "entity_name": "Synthetic Corporation 015",
+        "registration_number": "SYN-REG-000015",
+        "country": "United States",
+        "base_currency": "SGD",
+        "status": "ACTIVE",
+        "created_at": "2026-11-01T23:41:20.930021+05:30",
+        "updated_at": "2026-11-01T23:41:20.930021+05:30"
+    },
+    {
+        "entity_id": "ENT-000016",
+        "entity_name": "Synthetic Corporation 016",
+        "registration_number": "SYN-REG-000016",
+        "country": "United Kingdom",
+        "base_currency": "EUR",
+        "status": "ACTIVE",
+        "created_at": "2026-11-01T23:41:20.930021+05:30",
+        "updated_at": "2026-11-01T23:41:20.930021+05:30"
+    },
+    {
+        "entity_id": "ENT-000017",
+        "entity_name": "Synthetic Corporation 017",
+        "registration_number": "SYN-REG-000017",
+        "country": "India",
+        "base_currency": "USD",
+        "status": "ACTIVE",
+        "created_at": "2026-11-01T23:41:20.930021+05:30",
+        "updated_at": "2026-11-01T23:41:20.930021+05:30"
+    },
+    {
+        "entity_id": "ENT-000018",
+        "entity_name": "Synthetic Corporation 018",
+        "registration_number": "SYN-REG-000018",
+        "country": "Singapore",
+        "base_currency": "EUR",
+        "status": "ACTIVE",
+        "created_at": "2026-11-01T23:41:20.930021+05:30",
+        "updated_at": "2026-11-01T23:41:20.930021+05:30"
+    },
+    {
+        "entity_id": "ENT-000019",
+        "entity_name": "Synthetic Corporation 019",
+        "registration_number": "SYN-REG-000019",
+        "country": "India",
+        "base_currency": "EUR",
+        "status": "ACTIVE",
+        "created_at": "2026-11-01T23:41:20.930021+05:30",
+        "updated_at": "2026-11-01T23:41:20.930021+05:30"
+    },
+    {
+        "entity_id": "ENT-000020",
+        "entity_name": "Synthetic Corporation 020",
+        "registration_number": "SYN-REG-000020",
+        "country": "Singapore",
+        "base_currency": "SGD",
+        "status": "ACTIVE",
+        "created_at": "2026-11-01T23:41:20.930021+05:30",
+        "updated_at": "2026-11-01T23:41:20.930021+05:30"
+    },
+    {
+        "entity_id": "ENT-000021",
+        "entity_name": "Synthetic Corporation 021",
+        "registration_number": "SYN-REG-000021",
+        "country": "United Kingdom",
+        "base_currency": "SGD",
+        "status": "ACTIVE",
+        "created_at": "2026-11-01T23:41:20.930021+05:30",
+        "updated_at": "2026-11-01T23:41:20.930021+05:30"
+    },
+    {
+        "entity_id": "ENT-000022",
+        "entity_name": "Synthetic Corporation 022",
+        "registration_number": "SYN-REG-000022",
+        "country": "United States",
+        "base_currency": "SGD",
+        "status": "ACTIVE",
+        "created_at": "2026-11-01T23:41:20.930021+05:30",
+        "updated_at": "2026-11-01T23:41:20.930021+05:30"
+    },
+    {
+        "entity_id": "ENT-000023",
+        "entity_name": "Synthetic Corporation 023",
+        "registration_number": "SYN-REG-000023",
+        "country": "Germany",
+        "base_currency": "GBP",
+        "status": "ACTIVE",
+        "created_at": "2026-11-01T23:41:20.930021+05:30",
+        "updated_at": "2026-11-01T23:41:20.930021+05:30"
+    },
+    {
+        "entity_id": "ENT-000024",
+        "entity_name": "Synthetic Corporation 024",
+        "registration_number": "SYN-REG-000024",
+        "country": "Germany",
+        "base_currency": "SGD",
+        "status": "ACTIVE",
+        "created_at": "2026-11-01T23:41:20.930021+05:30",
+        "updated_at": "2026-11-01T23:41:20.930021+05:30"
+    },
+    {
+        "entity_id": "ENT-000025",
+        "entity_name": "Synthetic Corporation 025",
+        "registration_number": "SYN-REG-000025",
+        "country": "Germany",
+        "base_currency": "INR",
+        "status": "ACTIVE",
+        "created_at": "2026-11-01T23:41:20.930021+05:30",
+        "updated_at": "2026-11-01T23:41:20.930021+05:30"
+    },
+    {
+        "entity_id": "ENT-000026",
+        "entity_name": "Synthetic Corporation 026",
+        "registration_number": "SYN-REG-000026",
+        "country": "United Kingdom",
+        "base_currency": "USD",
+        "status": "ACTIVE",
+        "created_at": "2026-11-01T23:41:20.930021+05:30",
+        "updated_at": "2026-11-01T23:41:20.930021+05:30"
+    },
+    {
+        "entity_id": "ENT-000027",
+        "entity_name": "Synthetic Corporation 027",
+        "registration_number": "SYN-REG-000027",
+        "country": "United States",
+        "base_currency": "EUR",
+        "status": "ACTIVE",
+        "created_at": "2026-11-01T23:41:20.930021+05:30",
+        "updated_at": "2026-11-01T23:41:20.930021+05:30"
+    },
+    {
+        "entity_id": "ENT-000028",
+        "entity_name": "Synthetic Corporation 028",
+        "registration_number": "SYN-REG-000028",
+        "country": "United States",
+        "base_currency": "USD",
+        "status": "ACTIVE",
+        "created_at": "2026-11-01T23:41:20.930021+05:30",
+        "updated_at": "2026-11-01T23:41:20.930021+05:30"
+    },
+    {
+        "entity_id": "ENT-000029",
+        "entity_name": "Synthetic Corporation 029",
+        "registration_number": "SYN-REG-000029",
+        "country": "India",
+        "base_currency": "SGD",
+        "status": "ACTIVE",
+        "created_at": "2026-11-01T23:41:20.930021+05:30",
+        "updated_at": "2026-11-01T23:41:20.930021+05:30"
+    },
+    {
+        "entity_id": "ENT-000030",
+        "entity_name": "Synthetic Corporation 030",
+        "registration_number": "SYN-REG-000030",
+        "country": "Germany",
+        "base_currency": "EUR",
+        "status": "ACTIVE",
+        "created_at": "2026-11-01T23:41:20.930021+05:30",
+        "updated_at": "2026-11-01T23:41:20.930021+05:30"
+    }
+]

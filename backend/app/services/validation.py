@@ -292,7 +292,7 @@ def validate_dataset():
             print(
                 "These are liquidity warnings, not automatic validation failures."
             )
-        # 4. Amount and date validation
+        # 5. Amount and date validation
         invalid_ledger_dates = (
             session.query(LedgerEntry)
             .filter(
@@ -330,7 +330,7 @@ def validate_dataset():
             invalid_fx == 0,
             f"Invalid records={invalid_fx}",
         )
-        # 5. FX rate availability for forecast conversion
+        # 6. FX rate availability for forecast conversion
         missing_fx_rates = 0
 
         forecast_items = (
@@ -367,7 +367,7 @@ def validate_dataset():
             missing_fx_rates == 0,
             f"Forecast items missing FX rates={missing_fx_rates}",
         )
-        # 6. Duplicate source cash flows within the same forecast run
+        # 7. Duplicate source cash flows within the same forecast run
         duplicate_forecasts = (
             session.query(
                 CashFlowForecast.forecast_run_id,
@@ -400,7 +400,7 @@ def validate_dataset():
             f"Duplicate source groups={len(duplicate_forecasts)}",
         )
 
-        # 5. Forecast validation
+        # 8. Forecast validation
         forecast_runs = session.query(ForecastRun).all()
 
         invalid_cutoff = 0
@@ -445,7 +445,7 @@ def validate_dataset():
             f"Invalid records={invalid_forecast_amounts}",
         )
 
-        # 6. Receivable/payable flow direction
+        # 9. Receivable/payable flow direction
         invalid_receivable_flows = (
             session.query(CashFlowForecast)
             .filter(
@@ -476,7 +476,7 @@ def validate_dataset():
             f"Invalid records={invalid_payable_flows}",
         )
 
-        # 7. Forecast scenario count
+        # 10. Forecast scenario count
         check(
             "Three forecast scenarios",
             session.query(LiquidityScenario).count() == 3,
@@ -489,7 +489,7 @@ def validate_dataset():
             f"Runs={session.query(ForecastRun).count()}",
         )
 
-        # 8. Dataset record counts
+        # 11. Dataset record counts
         counts = {
             "LegalEntity": session.query(LegalEntity).count(),
             "BankAccount": session.query(BankAccount).count(),

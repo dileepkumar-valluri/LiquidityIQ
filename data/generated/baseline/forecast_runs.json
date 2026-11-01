@@ -1,0 +1,32 @@
+[
+    {
+        "forecast_run_id": "FCAST-2026-11-01-001",
+        "scenario_id": "SCN-000001",
+        "run_date": "2026-11-01",
+        "forecast_cutoff_date": "2026-10-31",
+        "reporting_currency": "INR",
+        "run_status": "PENDING",
+        "random_seed": 20261022,
+        "created_at": "2026-11-01T23:41:41.955943+05:30"
+    },
+    {
+        "forecast_run_id": "FCAST-2026-11-01-002",
+        "scenario_id": "SCN-000002",
+        "run_date": "2026-11-01",
+        "forecast_cutoff_date": "2026-10-31",
+        "reporting_currency": "INR",
+        "run_status": "PENDING",
+        "random_seed": 20261022,
+        "created_at": "2026-11-01T23:41:41.955943+05:30"
+    },
+    {
+        "forecast_run_id": "FCAST-2026-11-01-003",
+        "scenario_id": "SCN-000003",
+        "run_date": "2026-11-01",
+        "forecast_cutoff_date": "2026-10-31",
+        "reporting_currency": "INR",
+        "run_status": "PENDING",
+        "random_seed": 20261022,
+        "created_at": "2026-11-01T23:41:41.955943+05:30"
+    }
+]

@@ -1,0 +1,4 @@
+scenario_id,scenario_name,description,scenario_type,assumptions,created_at
+SCN-000001,BASE,Baseline expected cash flow.,BASELINE,"{'outflow_multiplier': 1.0, 'receipt_delay_days': 0}",2026-11-01T23:41:41.936368+05:30
+SCN-000002,DELAYED_RECEIPT,Customer receipts delayed by seven days.,DELAYED_RECEIPT,"{'outflow_multiplier': 1.0, 'receipt_delay_days': 7}",2026-11-01T23:41:41.936368+05:30
+SCN-000003,STRESS,Receipts delayed by fourteen days and outflows increased by ten percent.,STRESS,"{'outflow_multiplier': 1.1, 'receipt_delay_days': 14}",2026-11-01T23:41:41.936368+05:30

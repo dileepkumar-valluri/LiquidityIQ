@@ -20,6 +20,7 @@ from backend.app.models import (
 
 
 DEFAULT_SEED = 20261022
+BATCH_SIZE = 5000
 RUN_DATE = date(2026, 11, 1)
 CUTOFF_DATE = date(2026, 10, 31)
 SUPPORTED_CURRENCIES = ["INR", "USD", "EUR", "GBP", "SGD"]
@@ -41,15 +42,31 @@ BANK_NAMES = [
 ]
 
 
-@dataclass
+@dataclass(frozen=True)
 class DatasetConfig:
     legal_entities: int
     bank_accounts: int
     ledger_entries: int
-    forecast_items: int
+    forecast_items: int  # Distinct source items: receivables + payables.
+
+    def __post_init__(self):
+        if self.legal_entities <= 0 or self.bank_accounts <= 0:
+            raise ValueError(
+                "Entity and bank-account counts must be positive.")
+        if self.ledger_entries <= 0 or self.forecast_items <= 0:
+            raise ValueError("Ledger and forecast counts must be positive.")
+        if self.forecast_items % 2:
+            raise ValueError(
+                "forecast_items must be even: split equally between receivables and payables.")
+
+    @property
+    def source_items_per_type(self):
+        return self.forecast_items // 2
 
 
-STARTER_CONFIG = DatasetConfig(3, 15, 1000, 200)
+# Keep the existing starter dataset exactly the same: 200 receivables + 200 payables.
+# The baseline target is 20,000 distinct source items: 10,000 receivables + 10,000 payables.
+STARTER_CONFIG = DatasetConfig(3, 15, 1000, 400)
 BASELINE_CONFIG = DatasetConfig(30, 150, 100000, 20000)
 
 
@@ -296,9 +313,11 @@ def insert_receivables_and_payables(config, rng):
         receivable_count = session.query(Receivable).count()
         payable_count = session.query(Payable).count()
 
+        expected_per_type = config.source_items_per_type
+
         if (
-            receivable_count == config.forecast_items
-            and payable_count == config.forecast_items
+            receivable_count == expected_per_type
+            and payable_count == expected_per_type
         ):
             print("Receivables and payables already exist. No duplicates inserted.")
             return
@@ -311,7 +330,7 @@ def insert_receivables_and_payables(config, rng):
         receivables = []
         payables = []
 
-        for number in range(1, config.forecast_items + 1):
+        for number in range(1, config.source_items_per_type + 1):
             entity = rng.choice(entities)
 
             invoice_date = date(2026, 1, 1) + timedelta(
@@ -595,28 +614,40 @@ def insert_forecast_runs(seed):
 # 7. FX RATE LOOKUP
 # ---------------------------------------------------------
 
-def find_fx_rate(session, source_currency, reporting_currency, cutoff_date):
+def build_fx_rate_cache(session):
+    """Load FX rates once; avoid one database query for every forecast item."""
+    rates = (
+        session.query(CurrencyRate)
+        .order_by(CurrencyRate.effective_date.desc())
+        .all()
+    )
+
+    cache = {}
+    for rate in rates:
+        key = (rate.base_currency, rate.quote_currency)
+        cache.setdefault(key, []).append(rate)
+
+    return cache
+
+
+def get_cached_fx_rate(
+    cache,
+    source_currency,
+    reporting_currency,
+    cutoff_date,
+):
+    """Return the latest direct FX rate effective on or before cutoff_date."""
     if source_currency == reporting_currency:
         return None
 
-    rate = (
-        session.query(CurrencyRate)
-        .filter(
-            CurrencyRate.base_currency == source_currency,
-            CurrencyRate.quote_currency == reporting_currency,
-            CurrencyRate.effective_date <= cutoff_date,
-        )
-        .order_by(CurrencyRate.effective_date.desc())
-        .first()
+    for rate in cache.get((source_currency, reporting_currency), ()):
+        if rate.effective_date <= cutoff_date:
+            return rate
+
+    raise RuntimeError(
+        f"Missing FX rate: {source_currency} to {reporting_currency} "
+        f"on or before {cutoff_date}"
     )
-
-    if rate is None:
-        raise RuntimeError(
-            f"Missing FX rate: {source_currency} to {reporting_currency} "
-            f"on or before {cutoff_date}"
-        )
-
-    return rate
 
 
 # ---------------------------------------------------------
@@ -630,21 +661,38 @@ def insert_cash_flow_forecasts(config):
     try:
         existing_count = session.query(CashFlowForecast).count()
 
-        active_receivable_count = (
+        receivables = (
             session.query(Receivable)
             .filter(Receivable.status.in_(("SCHEDULED", "OVERDUE")))
-            .count()
+            .order_by(Receivable.receivable_id)
+            .all()
         )
-
-        active_payable_count = (
+        payables = (
             session.query(Payable)
             .filter(Payable.status.in_(("SCHEDULED", "OVERDUE")))
-            .count()
+            .order_by(Payable.payable_id)
+            .all()
+        )
+        forecast_runs = (
+            session.query(ForecastRun)
+            .order_by(ForecastRun.forecast_run_id)
+            .all()
         )
 
-        expected_count = (
-            active_receivable_count + active_payable_count
-        ) * 3
+        if len(forecast_runs) != 3:
+            raise RuntimeError("Exactly three forecast runs are required.")
+
+        expected_source_count = config.forecast_items
+        actual_source_count = len(receivables) + len(payables)
+        if actual_source_count != expected_source_count:
+            raise RuntimeError(
+                f"Expected {expected_source_count:,} active source items "
+                f"({config.source_items_per_type:,} receivables and "
+                f"{config.source_items_per_type:,} payables), found "
+                f"{len(receivables):,} receivables and {len(payables):,} payables."
+            )
+
+        expected_count = actual_source_count * len(forecast_runs)
 
         if existing_count == expected_count:
             print("Cash flow forecasts already exist. No duplicates inserted.")
@@ -652,142 +700,103 @@ def insert_cash_flow_forecasts(config):
 
         if existing_count > 0:
             raise RuntimeError(
-                f"Existing forecast count is {existing_count}; "
-                f"expected {expected_count}. Clear old forecast records first."
+                f"Existing forecast count is {existing_count:,}; "
+                f"expected {expected_count:,}. Do not rerun over a partial dataset."
             )
 
-        forecast_runs = (
-            session.query(ForecastRun)
-            .order_by(ForecastRun.forecast_run_id)
-            .all()
-        )
+        scenarios = {
+            scenario.scenario_id: scenario
+            for scenario in session.query(LiquidityScenario).all()
+        }
+        fx_cache = build_fx_rate_cache(session)
 
-        receivables = (
-            session.query(Receivable)
-            .filter(Receivable.status.in_(("SCHEDULED", "OVERDUE")))
-            .order_by(Receivable.receivable_id)
-            .all()
-        )
+        # Cache the source-to-reporting FX rate for each currency/run cutoff.
+        fx_lookup = {}
+        for run in forecast_runs:
+            for currency in SUPPORTED_CURRENCIES:
+                fx_lookup[(currency, run.reporting_currency, run.forecast_cutoff_date)] = (
+                    get_cached_fx_rate(
+                        fx_cache,
+                        currency,
+                        run.reporting_currency,
+                        run.forecast_cutoff_date,
+                    )
+                )
 
-        payables = (
-            session.query(Payable)
-            .filter(Payable.status.in_(("SCHEDULED", "OVERDUE")))
-            .order_by(Payable.payable_id)
-            .all()
-        )
-
-        if len(forecast_runs) != 3:
-            raise RuntimeError("Exactly three forecast runs are required.")
-
-        if len(receivables) != active_receivable_count:
-            raise RuntimeError("Receivable count validation failed.")
-
-        if len(payables) != active_payable_count:
-            raise RuntimeError("Payable count validation failed.")
-
-        records = []
+        inserted = 0
         item_number = 1
+        batch = []
 
         for forecast_run in forecast_runs:
-
-            scenario = (
-                session.query(LiquidityScenario)
-                .filter(
-                    LiquidityScenario.scenario_id
-                    == forecast_run.scenario_id
+            scenario = scenarios.get(forecast_run.scenario_id)
+            if scenario is None:
+                raise RuntimeError(
+                    f"Scenario {forecast_run.scenario_id} was not found."
                 )
-                .one()
-            )
 
             assumptions = scenario.assumptions or {}
-
-            receipt_delay_days = int(
-                assumptions.get("receipt_delay_days", 0)
-            )
-
+            receipt_delay_days = int(assumptions.get("receipt_delay_days", 0))
             outflow_multiplier = Decimal(
                 str(assumptions.get("outflow_multiplier", 1.0))
             )
-
-            first_forecast_day = (
-                forecast_run.forecast_cutoff_date
-                + timedelta(days=1)
-            )
-
-            # -----------------------------------------
-            # FORECAST INFLOWS
-            # -----------------------------------------
+            first_forecast_day = forecast_run.forecast_cutoff_date + \
+                timedelta(days=1)
 
             for receivable in receivables:
-
                 expected_date = max(
                     receivable.due_date,
                     first_forecast_day,
                 ) + timedelta(days=receipt_delay_days)
 
-                fx_rate = find_fx_rate(
-                    session,
+                fx_rate = fx_lookup.get((
                     receivable.currency,
                     forecast_run.reporting_currency,
                     forecast_run.forecast_cutoff_date,
-                )
+                ))
 
-                records.append(
+                batch.append(
                     CashFlowForecast(
                         forecast_item_id=generate_forecast_item_id(
-                            item_number
-                        ),
+                            item_number),
                         forecast_run_id=forecast_run.forecast_run_id,
                         receivable_id=receivable.receivable_id,
-                        currency_rate_id=(
-                            fx_rate.currency_rate_id if fx_rate else None
-                        ),
+                        currency_rate_id=fx_rate.currency_rate_id if fx_rate else None,
                         expected_date=expected_date,
                         amount=receivable.expected_amount,
                         currency=receivable.currency,
                         flow_type="INFLOW",
                         forecast_status=(
-                            "DELAYED"
-                            if receipt_delay_days > 0
-                            else "EXPECTED"
+                            "DELAYED" if receipt_delay_days > 0 else "EXPECTED"
                         ),
                     )
                 )
-
                 item_number += 1
 
-            # -----------------------------------------
-            # FORECAST OUTFLOWS
-            # -----------------------------------------
+                if len(batch) >= BATCH_SIZE:
+                    session.add_all(batch)
+                    session.flush()
+                    inserted += len(batch)
+                    batch.clear()
 
             for payable in payables:
-
-                expected_date = max(
-                    payable.due_date,
-                    first_forecast_day,
-                )
-
+                expected_date = max(payable.due_date, first_forecast_day)
                 adjusted_amount = (
                     payable.expected_amount * outflow_multiplier
                 ).quantize(Decimal("0.01"))
 
-                fx_rate = find_fx_rate(
-                    session,
+                fx_rate = fx_lookup.get((
                     payable.currency,
                     forecast_run.reporting_currency,
                     forecast_run.forecast_cutoff_date,
-                )
+                ))
 
-                records.append(
+                batch.append(
                     CashFlowForecast(
                         forecast_item_id=generate_forecast_item_id(
-                            item_number
-                        ),
+                            item_number),
                         forecast_run_id=forecast_run.forecast_run_id,
                         payable_id=payable.payable_id,
-                        currency_rate_id=(
-                            fx_rate.currency_rate_id if fx_rate else None
-                        ),
+                        currency_rate_id=fx_rate.currency_rate_id if fx_rate else None,
                         expected_date=expected_date,
                         amount=adjusted_amount,
                         currency=payable.currency,
@@ -795,20 +804,31 @@ def insert_cash_flow_forecasts(config):
                         forecast_status="EXPECTED",
                     )
                 )
-
                 item_number += 1
 
-        if len(records) != expected_count:
+                if len(batch) >= BATCH_SIZE:
+                    session.add_all(batch)
+                    session.flush()
+                    inserted += len(batch)
+                    batch.clear()
+
+        if batch:
+            session.add_all(batch)
+            session.flush()
+            inserted += len(batch)
+            batch.clear()
+
+        if inserted != expected_count:
             raise RuntimeError(
-                f"Generated {len(records)} records; "
-                f"expected {expected_count}."
+                f"Generated {inserted:,} records; expected {expected_count:,}."
             )
 
-        session.add_all(records)
         session.commit()
-
         print("Cash flow forecasts generated successfully!")
-        print(f"Forecast items inserted: {len(records)}")
+        print(f"Distinct source forecast items: {actual_source_count:,}")
+        print(f"Forecast runs: {len(forecast_runs)}")
+        print(f"Forecast rows inserted: {inserted:,}")
+        print(f"Rows per run: {actual_source_count:,}")
 
     except Exception:
         session.rollback()
@@ -857,6 +877,11 @@ if __name__ == "__main__":
     print("------------------------------------")
     print(f"Scale: {args.scale}")
     print(f"Seed: {args.seed}")
+    print(f"Distinct source forecast items: {config.forecast_items:,}")
+    print(f"Receivables: {config.source_items_per_type:,}")
+    print(f"Payables: {config.source_items_per_type:,}")
+    print(
+        f"Expected forecast rows across 3 runs: {config.forecast_items * 3:,}")
 
     insert_master_records(config, rng)
     insert_ledger_entries(config, rng)
