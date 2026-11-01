@@ -1,37 +1,131 @@
-# AI Prompt History — LiquidityIQ
+# AI Prompt History - LiquidityIQ
 
-## Purpose
+## 1. Purpose
 
-This document records the use of AI assistance during the development of LiquidityIQ, as required by the YottaFlex coding challenge.
+This document records the AI assistance used during
+the development of LiquidityIQ for the YottaFlex AI
+Associate - AI Forward Deployed Engineer challenge.
 
-## AI Tool
+## 2. AI Tool Disclosure
 
-- Tool: ChatGPT
-- Usage: Technical guidance, Python and SQLAlchemy implementation assistance, debugging, validation design, documentation, and code explanations.
+- AI tool: ChatGPT
+- Usage: Technical guidance, architecture discussion,
+  Python implementation, debugging, SQLAlchemy,
+  PostgreSQL, validation, forecasting, testing,
+  and documentation.
+- Candidate responsibility: All generated suggestions
+  and code were reviewed, executed, and evaluated
+  during local development.
 
-## Prompt Categories
+## 3. Development Prompt Log
 
-The prompts used during development covered the following tasks:
+The following entries summarize the actual AI-assisted
+development tasks. They are reconstructed task-level
+descriptions, not verbatim copies of every original
+conversation message.
 
-1. Designing the relational database schema for the nine required core entities, including primary keys, foreign keys, constraints, and relationships.
-2. Setting up the Python project structure, PostgreSQL database, SQLAlchemy models, and dependencies.
-3. Implementing deterministic synthetic data generation with a fixed random seed and configurable dataset sizes.
-4. Generating legal entities, bank accounts, ledger entries, receivables, payables, currency rates, scenarios, forecast runs, and forecast items.
-5. Defining ground-truth labels for the five required financial data-quality edge cases.
-6. Implementing FX rate lookup and reporting-currency conversion.
-7. Calculating daily opening balances, inflows, outflows, and closing balances.
-8. Implementing base, delayed-receipt, and stress scenarios.
-9. Developing forecast-to-actual comparison logic.
-10. Implementing dataset validation and CSV/JSON export functionality.
-11. Debugging implementation errors and reviewing command outputs.
-12. Preparing project documentation and setup instructions.
+### P01 - Database Architecture
+Discuss the relational database design for the nine
+required LiquidityIQ entities. Identify primary keys,
+foreign keys, relationships, cardinality, and optionality.
 
-## Important Disclosure
+### P02 - Project Setup
+Guide the setup of the Python project, PostgreSQL
+database, SQLAlchemy configuration, dependencies,
+and directory structure.
 
-This document summarizes the AI-assisted development tasks. It is not a verbatim transcript of every prompt submitted during development. The complete conversation export was not included in this repository.
+### P03 - SQLAlchemy Models
+Assist with implementing the nine core entity models,
+including columns, data types, constraints, identifiers,
+and relationships.
 
-AI-generated suggestions and code were reviewed and tested by the candidate during implementation. The candidate is responsible for understanding and explaining the submitted solution.
+### P04 - Synthetic Master Data
+Develop deterministic legal entity and bank account
+generation using a fixed random seed and configurable
+dataset sizes.
 
-## Candidate Responsibility
+### P05 - Financial Transaction Data
+Implement generation of ledger entries, receivables,
+payables, currencies, and related financial records
+while maintaining referential integrity.
 
-The candidate reviewed the implementation, executed the code locally, inspected generated data, and ran the available validation checks. Remaining limitations are documented in the project README.
+### P06 - Forecast Scenarios
+Design BASE, DELAYED_RECEIPT, and STRESS scenarios
+using explicit assumptions and reproducible calculations.
+
+### P07 - FX Conversion
+Implement historical FX rate lookup, effective-date
+selection, and reporting-currency conversion.
+
+### P08 - Daily Liquidity Forecast
+Calculate opening balances, inflows, outflows, and
+daily closing balances from source financial records.
+
+### P09 - Edge Cases and Ground Truth
+Create labelled examples for opening balance mismatch,
+missing FX rate, duplicate cash flow, actual after cutoff,
+and mixed-currency aggregation.
+
+### P10 - Forecast-to-Actual Comparison
+Implement actual-versus-forecast aggregation, currency
+conversion, variance calculation, and comparison statuses.
+
+### P11 - Validation
+Develop checks for primary keys, foreign keys,
+financial amounts, dates, currency consistency,
+forecast cutoffs, and duplicate source forecasts.
+
+### P12 - Lifecycle History
+Implement explicit status transition validation and
+supporting status history records.
+
+### P13 - Debugging and Verification
+Use execution outputs and error messages to investigate
+implementation issues and verify corrections.
+
+### P14 - Documentation and Submission
+Prepare project documentation, data dictionary,
+schema documentation, source manifest, README,
+CSV/JSON exports, and PostgreSQL SQL seed export.
+
+## 4. Verification Performed
+
+The candidate performed local verification, including:
+
+- Starter dataset generation.
+- Primary-key uniqueness checks.
+- Ten foreign-key integrity checks.
+- Ledger and bank account currency consistency.
+- FX rate availability.
+- Forecast cutoff validation.
+- Forecast flow direction checks.
+- Duplicate source forecast checks.
+- Edge-case detection for five required cases.
+- Daily cash position calculations.
+- Lifecycle transition testing.
+- PostgreSQL SQL export inspection.
+
+Latest recorded dataset validation:
+33 checks passed, 0 failed.
+
+## 5. Limitations and Transparency
+
+This file is a reconstructed development log, not a
+verbatim transcript of all prompts submitted to AI tools.
+
+The complete historical conversation export was not
+preserved in the repository. Therefore, the entries
+above summarize the AI-assisted tasks based on the
+available development history.
+
+AI responses were not archived in full.
+
+## 6. Candidate Responsibility
+
+The candidate is responsible for understanding,
+reviewing, testing, and explaining the submitted
+implementation.
+
+AI assistance was used as a development aid.
+The candidate performed local execution and verification
+and remains responsible for the final submission.
