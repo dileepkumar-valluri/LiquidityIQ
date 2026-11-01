@@ -142,7 +142,7 @@ python -m backend.app.services.edge_cases
 | CashFlowForecast | 1,200 |
 | **Total** | **2,504** |
 
-The latest verified validation run reported **28 checks passed and 0 failures**.
+The latest verified validation run reported **33 checks passed and 0 failures**.
 Three bank accounts have negative calculated closing balances. These are reported as liquidity warnings, not validation failures.
 
 ## Forecast Scenarios

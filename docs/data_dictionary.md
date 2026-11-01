@@ -143,7 +143,7 @@
 |---|---|---|---|---|---|---|
 | payable_id | VARCHAR(20) | Yes | `PAY-2026-000001` | Identifier | Yes (PK) | Must follow the defined ID format and remain immutable |
 | entity_id | VARCHAR(10) | Yes | Existing LegalEntity ID | Identifier | No | Must reference an existing LegalEntity |
-| vendor_reference | VARCHAR(50) | Yes | Synthetic vendor reference | Identifier | No | Must not be empty |
+| supplier_reference | VARCHAR(50) | Yes | Synthetic supplier reference | Identifier | No | Must not be empty |
 | invoice_date | DATE | Yes | Valid calendar date | Date | No | Must not be in the future |
 | due_date | DATE | Yes | Valid calendar date | Date | No | Must be on or after invoice_date |
 | expected_amount | NUMERIC(18,2) | Yes | Positive monetary amount | Payable currency | No | Must be greater than zero |
@@ -163,7 +163,7 @@
 4. Payables represent expected outgoing cash flows.
 5. Delayed payments and large one-off payments must be represented through documented scenario assumptions.
 6. Status changes must be traceable through event history.
-7. Use synthetic vendor references.
+7. Use synthetic supplier references.
 
 ## 6. CurrencyRate
 
