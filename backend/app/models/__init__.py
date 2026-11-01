@@ -7,7 +7,7 @@ from backend.app.models.currency_rate import CurrencyRate
 from backend.app.models.liquidity_scenario import LiquidityScenario
 from backend.app.models.forecast_run import ForecastRun
 from backend.app.models.cash_flow_forecast import CashFlowForecast
-
+from backend.app.models.status_history import StatusHistory
 
 __all__ = [
     "LegalEntity",
@@ -19,4 +19,5 @@ __all__ = [
     "LiquidityScenario",
     "ForecastRun",
     "CashFlowForecast",
+    "StatusHistory"
 ]
