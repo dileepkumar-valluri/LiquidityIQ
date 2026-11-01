@@ -5,7 +5,7 @@ LiquidityIQ is a Python-based liquidity forecasting and scenario analysis system
 ## Key Features
 
 - Relational data model covering nine core financial entities.
-- Reproducible synthetic data generation using a fixed seed.
+- Seeded synthetic data generation using a fixed seed.
 - BASE, DELAYED_RECEIPT, and STRESS liquidity scenarios.
 - Foreign exchange rate lookup and reporting-currency conversion.
 - Daily cash position calculations.
@@ -42,7 +42,6 @@ LiquidityIQ/
 ├── backend/
 │   ├── app/
 │   │   ├── models/
-│   │   ├── routes/
 │   │   ├── services/
 │   │   └── database.py
 │   └── tests/
@@ -159,13 +158,26 @@ data/generated/baseline/
 
 The directory contains table-level CSV and JSON exports, a combined JSON export, and a PostgreSQL SQL dump.
 
-To restore the SQL dump into a separate, empty PostgreSQL database:
+### Database SQL Exports
+
+Two SQL exports are available:
+
+- **Baseline dataset:** `data/generated/baseline/liquidityiq_baseline.sql`
+- **Starter dataset:** `data/generated/liquidityiq_seed.sql`
+
+To restore the baseline SQL dump into a separate, empty PostgreSQL database:
 
 ```powershell
 psql -U postgres -d liquidityiq_baseline -f data/generated/baseline/liquidityiq_baseline.sql
 ```
 
-Create the target database before running the restore command.
+To restore the starter SQL dump into a separate, empty PostgreSQL database:
+
+```powershell
+psql -U postgres -d liquidityiq -f data/generated/liquidityiq_seed.sql
+```
+
+Create the respective target database before running the restore command.
 
 ## Validation
 
@@ -203,10 +215,16 @@ The committed baseline exports are preserved separately in `data/generated/basel
 
 ## Edge-Case Validation
 
-Ground-truth definitions and edge-case detection can be run with:
+Generate the ground-truth definitions and anomaly records:
 
 ```powershell
 python -m backend.app.services.edge_cases
+```
+
+Run edge-case detection:
+
+```powershell
+python -m backend.app.services.edge_case_validation
 ```
 
 The five documented edge cases cover:
@@ -216,6 +234,8 @@ The five documented edge cases cover:
 3. Duplicate cash flow.
 4. Actual ledger entry after the forecast cutoff.
 5. Mixed-currency mismatch without conversion.
+
+The ground-truth generation and detection workflow uses separate modules. The documented edge cases and their detection tests do not, by themselves, prove that every anomaly has been injected into the baseline financial dataset.
 
 ## Forecast Scenarios
 
@@ -233,7 +253,9 @@ Install the project dependencies and run:
 python -m pytest backend/tests -v
 ```
 
-The automated test suite contains 36 tests covering:
+**Test prerequisites:** PostgreSQL must be running, `.env` must point to a database containing the starter dataset, and the database schema must be initialized before running the full test suite.
+
+The automated test suite covers:
 
 - Actual-versus-forecast currency conversion.
 - Daily liquidity forecasting.
@@ -249,7 +271,7 @@ The baseline dataset was separately validated with 33 checks passing and zero fa
 ## Implementation Notes and Limitations
 
 - The project currently provides Python data models and forecasting, validation, and export services. A runnable web application entry point is not included.
-- The documented ground-truth edge cases and their detection tests do not, by themselves, prove that every anomaly has been injected into the baseline input dataset.
+- The documented ground-truth edge cases and their detection tests do not establish that every anomaly has been injected into the baseline input dataset.
 - Daily cash positions are calculated by the forecasting service in memory.
 - Forecast-to-actual comparison is aggregated by legal entity, date, and flow type.
 - Negative closing balances are reported as liquidity warnings.
