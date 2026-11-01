@@ -134,6 +134,70 @@ def validate_dataset():
             invalid_forecasts == 0,
             f"Invalid references={invalid_forecasts}",
         )
+        # Additional foreign key integrity checks
+
+        invalid_scenarios = (
+            session.query(ForecastRun)
+            .outerjoin(
+                LiquidityScenario,
+                ForecastRun.scenario_id == LiquidityScenario.scenario_id,
+            )
+            .filter(LiquidityScenario.scenario_id.is_(None))
+            .count()
+        )
+
+        check(
+            "ForecastRun -> LiquidityScenario FK",
+            invalid_scenarios == 0,
+            f"Invalid references={invalid_scenarios}",
+        )
+
+        optional_fk_checks = [
+            (
+                "CashFlowForecast -> BankAccount FK",
+                CashFlowForecast.bank_account_id,
+                BankAccount,
+                BankAccount.bank_account_id,
+            ),
+            (
+                "CashFlowForecast -> Receivable FK",
+                CashFlowForecast.receivable_id,
+                Receivable,
+                Receivable.receivable_id,
+            ),
+            (
+                "CashFlowForecast -> Payable FK",
+                CashFlowForecast.payable_id,
+                Payable,
+                Payable.payable_id,
+            ),
+            (
+                "CashFlowForecast -> CurrencyRate FK",
+                CashFlowForecast.currency_rate_id,
+                CurrencyRate,
+                CurrencyRate.currency_rate_id,
+            ),
+        ]
+
+        for check_name, foreign_key, parent_model, parent_key in optional_fk_checks:
+            invalid_references = (
+                session.query(CashFlowForecast)
+                .outerjoin(
+                    parent_model,
+                    foreign_key == parent_key,
+                )
+                .filter(
+                    foreign_key.isnot(None),
+                    parent_key.is_(None),
+                )
+                .count()
+            )
+
+            check(
+                check_name,
+                invalid_references == 0,
+                f"Invalid references={invalid_references}",
+            )
         # 3. Bank account and ledger currency consistency
         currency_mismatches = (
             session.query(LedgerEntry)
