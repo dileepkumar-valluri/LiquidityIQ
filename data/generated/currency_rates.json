@@ -1,0 +1,722 @@
+[
+    {
+        "currency_rate_id": "FX-2026-000001",
+        "base_currency": "INR",
+        "quote_currency": "USD",
+        "exchange_rate": "0.01130000",
+        "effective_date": "2026-01-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000002",
+        "base_currency": "INR",
+        "quote_currency": "EUR",
+        "exchange_rate": "0.01046296",
+        "effective_date": "2026-01-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000003",
+        "base_currency": "INR",
+        "quote_currency": "GBP",
+        "exchange_rate": "0.00889764",
+        "effective_date": "2026-01-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000004",
+        "base_currency": "INR",
+        "quote_currency": "SGD",
+        "exchange_rate": "0.01527027",
+        "effective_date": "2026-01-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000005",
+        "base_currency": "USD",
+        "quote_currency": "INR",
+        "exchange_rate": "88.49557522",
+        "effective_date": "2026-01-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000006",
+        "base_currency": "USD",
+        "quote_currency": "EUR",
+        "exchange_rate": "0.92592593",
+        "effective_date": "2026-01-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000007",
+        "base_currency": "USD",
+        "quote_currency": "GBP",
+        "exchange_rate": "0.78740157",
+        "effective_date": "2026-01-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000008",
+        "base_currency": "USD",
+        "quote_currency": "SGD",
+        "exchange_rate": "1.35135135",
+        "effective_date": "2026-01-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000009",
+        "base_currency": "EUR",
+        "quote_currency": "INR",
+        "exchange_rate": "95.57522124",
+        "effective_date": "2026-01-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000010",
+        "base_currency": "EUR",
+        "quote_currency": "USD",
+        "exchange_rate": "1.08000000",
+        "effective_date": "2026-01-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000011",
+        "base_currency": "EUR",
+        "quote_currency": "GBP",
+        "exchange_rate": "0.85039370",
+        "effective_date": "2026-01-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000012",
+        "base_currency": "EUR",
+        "quote_currency": "SGD",
+        "exchange_rate": "1.45945946",
+        "effective_date": "2026-01-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000013",
+        "base_currency": "GBP",
+        "quote_currency": "INR",
+        "exchange_rate": "112.38938053",
+        "effective_date": "2026-01-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000014",
+        "base_currency": "GBP",
+        "quote_currency": "USD",
+        "exchange_rate": "1.27000000",
+        "effective_date": "2026-01-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000015",
+        "base_currency": "GBP",
+        "quote_currency": "EUR",
+        "exchange_rate": "1.17592593",
+        "effective_date": "2026-01-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000016",
+        "base_currency": "GBP",
+        "quote_currency": "SGD",
+        "exchange_rate": "1.71621622",
+        "effective_date": "2026-01-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000017",
+        "base_currency": "SGD",
+        "quote_currency": "INR",
+        "exchange_rate": "65.48672566",
+        "effective_date": "2026-01-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000018",
+        "base_currency": "SGD",
+        "quote_currency": "USD",
+        "exchange_rate": "0.74000000",
+        "effective_date": "2026-01-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000019",
+        "base_currency": "SGD",
+        "quote_currency": "EUR",
+        "exchange_rate": "0.68518519",
+        "effective_date": "2026-01-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000020",
+        "base_currency": "SGD",
+        "quote_currency": "GBP",
+        "exchange_rate": "0.58267717",
+        "effective_date": "2026-01-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000021",
+        "base_currency": "INR",
+        "quote_currency": "USD",
+        "exchange_rate": "0.01132260",
+        "effective_date": "2026-04-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000022",
+        "base_currency": "INR",
+        "quote_currency": "EUR",
+        "exchange_rate": "0.01048389",
+        "effective_date": "2026-04-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000023",
+        "base_currency": "INR",
+        "quote_currency": "GBP",
+        "exchange_rate": "0.00891543",
+        "effective_date": "2026-04-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000024",
+        "base_currency": "INR",
+        "quote_currency": "SGD",
+        "exchange_rate": "0.01530081",
+        "effective_date": "2026-04-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000025",
+        "base_currency": "USD",
+        "quote_currency": "INR",
+        "exchange_rate": "88.67256637",
+        "effective_date": "2026-04-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000026",
+        "base_currency": "USD",
+        "quote_currency": "EUR",
+        "exchange_rate": "0.92777778",
+        "effective_date": "2026-04-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000027",
+        "base_currency": "USD",
+        "quote_currency": "GBP",
+        "exchange_rate": "0.78897638",
+        "effective_date": "2026-04-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000028",
+        "base_currency": "USD",
+        "quote_currency": "SGD",
+        "exchange_rate": "1.35405405",
+        "effective_date": "2026-04-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000029",
+        "base_currency": "EUR",
+        "quote_currency": "INR",
+        "exchange_rate": "95.76637168",
+        "effective_date": "2026-04-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000030",
+        "base_currency": "EUR",
+        "quote_currency": "USD",
+        "exchange_rate": "1.08216000",
+        "effective_date": "2026-04-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000031",
+        "base_currency": "EUR",
+        "quote_currency": "GBP",
+        "exchange_rate": "0.85209449",
+        "effective_date": "2026-04-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000032",
+        "base_currency": "EUR",
+        "quote_currency": "SGD",
+        "exchange_rate": "1.46237838",
+        "effective_date": "2026-04-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000033",
+        "base_currency": "GBP",
+        "quote_currency": "INR",
+        "exchange_rate": "112.61415929",
+        "effective_date": "2026-04-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000034",
+        "base_currency": "GBP",
+        "quote_currency": "USD",
+        "exchange_rate": "1.27254000",
+        "effective_date": "2026-04-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000035",
+        "base_currency": "GBP",
+        "quote_currency": "EUR",
+        "exchange_rate": "1.17827778",
+        "effective_date": "2026-04-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000036",
+        "base_currency": "GBP",
+        "quote_currency": "SGD",
+        "exchange_rate": "1.71964865",
+        "effective_date": "2026-04-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000037",
+        "base_currency": "SGD",
+        "quote_currency": "INR",
+        "exchange_rate": "65.61769912",
+        "effective_date": "2026-04-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000038",
+        "base_currency": "SGD",
+        "quote_currency": "USD",
+        "exchange_rate": "0.74148000",
+        "effective_date": "2026-04-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000039",
+        "base_currency": "SGD",
+        "quote_currency": "EUR",
+        "exchange_rate": "0.68655556",
+        "effective_date": "2026-04-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000040",
+        "base_currency": "SGD",
+        "quote_currency": "GBP",
+        "exchange_rate": "0.58384252",
+        "effective_date": "2026-04-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000041",
+        "base_currency": "INR",
+        "quote_currency": "USD",
+        "exchange_rate": "0.01134520",
+        "effective_date": "2026-07-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000042",
+        "base_currency": "INR",
+        "quote_currency": "EUR",
+        "exchange_rate": "0.01050481",
+        "effective_date": "2026-07-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000043",
+        "base_currency": "INR",
+        "quote_currency": "GBP",
+        "exchange_rate": "0.00893323",
+        "effective_date": "2026-07-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000044",
+        "base_currency": "INR",
+        "quote_currency": "SGD",
+        "exchange_rate": "0.01533135",
+        "effective_date": "2026-07-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000045",
+        "base_currency": "USD",
+        "quote_currency": "INR",
+        "exchange_rate": "88.84955752",
+        "effective_date": "2026-07-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000046",
+        "base_currency": "USD",
+        "quote_currency": "EUR",
+        "exchange_rate": "0.92962963",
+        "effective_date": "2026-07-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000047",
+        "base_currency": "USD",
+        "quote_currency": "GBP",
+        "exchange_rate": "0.79055118",
+        "effective_date": "2026-07-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000048",
+        "base_currency": "USD",
+        "quote_currency": "SGD",
+        "exchange_rate": "1.35675676",
+        "effective_date": "2026-07-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000049",
+        "base_currency": "EUR",
+        "quote_currency": "INR",
+        "exchange_rate": "95.95752212",
+        "effective_date": "2026-07-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000050",
+        "base_currency": "EUR",
+        "quote_currency": "USD",
+        "exchange_rate": "1.08432000",
+        "effective_date": "2026-07-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000051",
+        "base_currency": "EUR",
+        "quote_currency": "GBP",
+        "exchange_rate": "0.85379528",
+        "effective_date": "2026-07-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000052",
+        "base_currency": "EUR",
+        "quote_currency": "SGD",
+        "exchange_rate": "1.46529730",
+        "effective_date": "2026-07-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000053",
+        "base_currency": "GBP",
+        "quote_currency": "INR",
+        "exchange_rate": "112.83893805",
+        "effective_date": "2026-07-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000054",
+        "base_currency": "GBP",
+        "quote_currency": "USD",
+        "exchange_rate": "1.27508000",
+        "effective_date": "2026-07-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000055",
+        "base_currency": "GBP",
+        "quote_currency": "EUR",
+        "exchange_rate": "1.18062963",
+        "effective_date": "2026-07-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000056",
+        "base_currency": "GBP",
+        "quote_currency": "SGD",
+        "exchange_rate": "1.72308108",
+        "effective_date": "2026-07-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000057",
+        "base_currency": "SGD",
+        "quote_currency": "INR",
+        "exchange_rate": "65.74867257",
+        "effective_date": "2026-07-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000058",
+        "base_currency": "SGD",
+        "quote_currency": "USD",
+        "exchange_rate": "0.74296000",
+        "effective_date": "2026-07-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000059",
+        "base_currency": "SGD",
+        "quote_currency": "EUR",
+        "exchange_rate": "0.68792593",
+        "effective_date": "2026-07-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000060",
+        "base_currency": "SGD",
+        "quote_currency": "GBP",
+        "exchange_rate": "0.58500787",
+        "effective_date": "2026-07-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000061",
+        "base_currency": "INR",
+        "quote_currency": "USD",
+        "exchange_rate": "0.01136780",
+        "effective_date": "2026-10-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000062",
+        "base_currency": "INR",
+        "quote_currency": "EUR",
+        "exchange_rate": "0.01052574",
+        "effective_date": "2026-10-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000063",
+        "base_currency": "INR",
+        "quote_currency": "GBP",
+        "exchange_rate": "0.00895102",
+        "effective_date": "2026-10-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000064",
+        "base_currency": "INR",
+        "quote_currency": "SGD",
+        "exchange_rate": "0.01536189",
+        "effective_date": "2026-10-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000065",
+        "base_currency": "USD",
+        "quote_currency": "INR",
+        "exchange_rate": "89.02654867",
+        "effective_date": "2026-10-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000066",
+        "base_currency": "USD",
+        "quote_currency": "EUR",
+        "exchange_rate": "0.93148148",
+        "effective_date": "2026-10-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000067",
+        "base_currency": "USD",
+        "quote_currency": "GBP",
+        "exchange_rate": "0.79212598",
+        "effective_date": "2026-10-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000068",
+        "base_currency": "USD",
+        "quote_currency": "SGD",
+        "exchange_rate": "1.35945946",
+        "effective_date": "2026-10-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000069",
+        "base_currency": "EUR",
+        "quote_currency": "INR",
+        "exchange_rate": "96.14867257",
+        "effective_date": "2026-10-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000070",
+        "base_currency": "EUR",
+        "quote_currency": "USD",
+        "exchange_rate": "1.08648000",
+        "effective_date": "2026-10-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000071",
+        "base_currency": "EUR",
+        "quote_currency": "GBP",
+        "exchange_rate": "0.85549606",
+        "effective_date": "2026-10-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000072",
+        "base_currency": "EUR",
+        "quote_currency": "SGD",
+        "exchange_rate": "1.46821622",
+        "effective_date": "2026-10-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000073",
+        "base_currency": "GBP",
+        "quote_currency": "INR",
+        "exchange_rate": "113.06371681",
+        "effective_date": "2026-10-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000074",
+        "base_currency": "GBP",
+        "quote_currency": "USD",
+        "exchange_rate": "1.27762000",
+        "effective_date": "2026-10-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000075",
+        "base_currency": "GBP",
+        "quote_currency": "EUR",
+        "exchange_rate": "1.18298148",
+        "effective_date": "2026-10-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000076",
+        "base_currency": "GBP",
+        "quote_currency": "SGD",
+        "exchange_rate": "1.72651351",
+        "effective_date": "2026-10-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000077",
+        "base_currency": "SGD",
+        "quote_currency": "INR",
+        "exchange_rate": "65.87964602",
+        "effective_date": "2026-10-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000078",
+        "base_currency": "SGD",
+        "quote_currency": "USD",
+        "exchange_rate": "0.74444000",
+        "effective_date": "2026-10-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000079",
+        "base_currency": "SGD",
+        "quote_currency": "EUR",
+        "exchange_rate": "0.68929630",
+        "effective_date": "2026-10-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    },
+    {
+        "currency_rate_id": "FX-2026-000080",
+        "base_currency": "SGD",
+        "quote_currency": "GBP",
+        "exchange_rate": "0.58617323",
+        "effective_date": "2026-10-01",
+        "source": "SYNTHETIC_REFERENCE_DATA",
+        "created_at": "2026-11-01T00:49:08.399594+05:30"
+    }
+]

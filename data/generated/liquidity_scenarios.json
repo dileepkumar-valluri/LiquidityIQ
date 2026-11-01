@@ -1,0 +1,35 @@
+[
+    {
+        "scenario_id": "SCN-000001",
+        "scenario_name": "BASE",
+        "description": "Baseline scenario using expected receipt and payment dates.",
+        "scenario_type": "BASELINE",
+        "assumptions": {
+            "outflow_multiplier": 1.0,
+            "receipt_delay_days": 0
+        },
+        "created_at": "2026-11-01T01:00:12.287125+05:30"
+    },
+    {
+        "scenario_id": "SCN-000002",
+        "scenario_name": "DELAYED_RECEIPT",
+        "description": "Customer receipts delayed by seven days.",
+        "scenario_type": "DELAYED_RECEIPT",
+        "assumptions": {
+            "outflow_multiplier": 1.0,
+            "receipt_delay_days": 7
+        },
+        "created_at": "2026-11-01T01:00:12.287125+05:30"
+    },
+    {
+        "scenario_id": "SCN-000003",
+        "scenario_name": "STRESS",
+        "description": "Receipts delayed by fourteen days and outflows increased by ten percent.",
+        "scenario_type": "STRESS",
+        "assumptions": {
+            "outflow_multiplier": 1.1,
+            "receipt_delay_days": 14
+        },
+        "created_at": "2026-11-01T01:00:12.287125+05:30"
+    }
+]

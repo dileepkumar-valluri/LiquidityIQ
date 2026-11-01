@@ -1,0 +1,36 @@
+{
+    "dataset": "LiquidityIQ",
+    "generated_on": "2026-11-01",
+    "edge_cases": [
+        {
+            "case_id": "EDGE-001",
+            "issue_type": "OPENING_BALANCE_MISMATCH",
+            "description": "Opening balance plus ledger activity does not equal closing balance.",
+            "expected_decision": "FLAG_RECONCILIATION_FAILURE"
+        },
+        {
+            "case_id": "EDGE-002",
+            "issue_type": "MISSING_FX_RATE",
+            "description": "A foreign currency cash flow has no applicable FX rate.",
+            "expected_decision": "FLAG_MISSING_FX_RATE"
+        },
+        {
+            "case_id": "EDGE-003",
+            "issue_type": "DUPLICATE_CASH_FLOW",
+            "description": "The same cash flow is counted twice.",
+            "expected_decision": "FLAG_DUPLICATE"
+        },
+        {
+            "case_id": "EDGE-004",
+            "issue_type": "ACTUAL_AFTER_CUTOFF",
+            "description": "An actual transaction posted after the forecast cutoff must not affect the original forecast.",
+            "expected_decision": "EXCLUDE_FROM_ORIGINAL_FORECAST"
+        },
+        {
+            "case_id": "EDGE-005",
+            "issue_type": "UNCONVERTED_CURRENCY",
+            "description": "Cash flows in different currencies are added without conversion.",
+            "expected_decision": "FLAG_CURRENCY_MISMATCH"
+        }
+    ]
+}

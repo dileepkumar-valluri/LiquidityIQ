@@ -1,0 +1,4 @@
+entity_id,entity_name,registration_number,country,base_currency,status,created_at,updated_at
+ENT-000001,Synthetic Corporation 001,SYN-REG-000001,United Kingdom,SGD,ACTIVE,2026-10-31T22:54:19.135496+05:30,2026-10-31T22:54:19.135496+05:30
+ENT-000002,Synthetic Corporation 002,SYN-REG-000002,United States,USD,ACTIVE,2026-10-31T22:54:19.135496+05:30,2026-10-31T22:54:19.135496+05:30
+ENT-000003,Synthetic Corporation 003,SYN-REG-000003,United States,GBP,ACTIVE,2026-10-31T22:54:19.135496+05:30,2026-10-31T22:54:19.135496+05:30
