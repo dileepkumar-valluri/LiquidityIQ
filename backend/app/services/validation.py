@@ -1,5 +1,7 @@
 
 from backend.app.database import SessionLocal
+from sqlalchemy import func, case
+from datetime import date
 from backend.app.models import (
     LegalEntity,
     BankAccount,
@@ -10,6 +12,7 @@ from backend.app.models import (
     LiquidityScenario,
     ForecastRun,
     CashFlowForecast,
+    StatusHistory,
 )
 
 
@@ -131,8 +134,101 @@ def validate_dataset():
             invalid_forecasts == 0,
             f"Invalid references={invalid_forecasts}",
         )
+        # 3. Bank account and ledger currency consistency
+        currency_mismatches = (
+            session.query(LedgerEntry)
+            .join(
+                BankAccount,
+                LedgerEntry.bank_account_id
+                == BankAccount.bank_account_id,
+            )
+            .filter(
+                LedgerEntry.currency != BankAccount.currency
+            )
+            .count()
+        )
 
-        # 3. Amount and date validation
+        check(
+            "Ledger and bank account currency consistency",
+            currency_mismatches == 0,
+            f"Currency mismatches={currency_mismatches}",
+        )
+
+        # 4. Calculate closing balances from opening balances and ledger activity
+        negative_closing_balances = 0
+        accounts_checked = 0
+
+        for account in session.query(BankAccount).all():
+            ledger_totals = (
+                session.query(
+                    func.coalesce(
+                        func.sum(
+                            case(
+                                (
+                                    LedgerEntry.transaction_type == "INFLOW",
+                                    LedgerEntry.amount,
+                                ),
+                                else_=0,
+                            )
+                        ),
+                        0,
+                    ),
+                    func.coalesce(
+                        func.sum(
+                            case(
+                                (
+                                    LedgerEntry.transaction_type == "OUTFLOW",
+                                    LedgerEntry.amount,
+                                ),
+                                else_=0,
+                            )
+                        ),
+                        0,
+                    ),
+                )
+                .filter(
+                    LedgerEntry.bank_account_id == account.bank_account_id,
+                    LedgerEntry.posting_date <= date(2026, 10, 31),
+                    LedgerEntry.posting_date >= account.opening_balance_date,
+                )
+                .one()
+            )
+
+            inflows, outflows = ledger_totals
+
+            calculated_closing = (
+                account.opening_balance + inflows - outflows
+            )
+
+            accounts_checked += 1
+
+            if calculated_closing < 0:
+                negative_closing_balances += 1
+                print(
+                    f"NEGATIVE BALANCE: {account.bank_account_id} | "
+                    f"Opening={account.opening_balance} | "
+                    f"Inflows={inflows} | "
+                    f"Outflows={outflows} | "
+                    f"Closing={calculated_closing}"
+                )
+        check(
+            "Closing balance calculation",
+            True,
+            (
+                f"Accounts checked={accounts_checked}, "
+                f"Negative balances flagged={negative_closing_balances}"
+            ),
+        )
+
+        if negative_closing_balances > 0:
+            print(
+                f"\nWARNING: {negative_closing_balances} accounts "
+                "have negative calculated closing balances."
+            )
+            print(
+                "These are liquidity warnings, not automatic validation failures."
+            )
+        # 4. Amount and date validation
         invalid_ledger_dates = (
             session.query(LedgerEntry)
             .filter(
@@ -170,8 +266,77 @@ def validate_dataset():
             invalid_fx == 0,
             f"Invalid records={invalid_fx}",
         )
+        # 5. FX rate availability for forecast conversion
+        missing_fx_rates = 0
 
-        # 4. Forecast validation
+        forecast_items = (
+            session.query(CashFlowForecast, ForecastRun)
+            .join(
+                ForecastRun,
+                CashFlowForecast.forecast_run_id
+                == ForecastRun.forecast_run_id,
+            )
+            .all()
+        )
+
+        for item, run in forecast_items:
+            if item.currency == run.reporting_currency:
+                continue
+
+            fx_rate = (
+                session.query(CurrencyRate)
+                .filter(
+                    CurrencyRate.base_currency == item.currency,
+                    CurrencyRate.quote_currency == run.reporting_currency,
+                    CurrencyRate.effective_date
+                    <= run.forecast_cutoff_date,
+                )
+                .order_by(CurrencyRate.effective_date.desc())
+                .first()
+            )
+
+            if fx_rate is None:
+                missing_fx_rates += 1
+
+        check(
+            "FX rate availability",
+            missing_fx_rates == 0,
+            f"Forecast items missing FX rates={missing_fx_rates}",
+        )
+        # 6. Duplicate source cash flows within the same forecast run
+        duplicate_forecasts = (
+            session.query(
+                CashFlowForecast.forecast_run_id,
+                CashFlowForecast.receivable_id,
+                CashFlowForecast.payable_id,
+                func.count(CashFlowForecast.forecast_item_id),
+            )
+            .filter(
+                (
+                    CashFlowForecast.receivable_id.isnot(None)
+                )
+                | (
+                    CashFlowForecast.payable_id.isnot(None)
+                )
+            )
+            .group_by(
+                CashFlowForecast.forecast_run_id,
+                CashFlowForecast.receivable_id,
+                CashFlowForecast.payable_id,
+            )
+            .having(
+                func.count(CashFlowForecast.forecast_item_id) > 1
+            )
+            .all()
+        )
+
+        check(
+            "Duplicate source forecasts within a run",
+            len(duplicate_forecasts) == 0,
+            f"Duplicate source groups={len(duplicate_forecasts)}",
+        )
+
+        # 5. Forecast validation
         forecast_runs = session.query(ForecastRun).all()
 
         invalid_cutoff = 0
@@ -216,7 +381,7 @@ def validate_dataset():
             f"Invalid records={invalid_forecast_amounts}",
         )
 
-        # 5. Receivable/payable flow direction
+        # 6. Receivable/payable flow direction
         invalid_receivable_flows = (
             session.query(CashFlowForecast)
             .filter(
@@ -247,7 +412,7 @@ def validate_dataset():
             f"Invalid records={invalid_payable_flows}",
         )
 
-        # 6. Forecast scenario count
+        # 7. Forecast scenario count
         check(
             "Three forecast scenarios",
             session.query(LiquidityScenario).count() == 3,
@@ -260,7 +425,7 @@ def validate_dataset():
             f"Runs={session.query(ForecastRun).count()}",
         )
 
-        # 7. Dataset record counts
+        # 8. Dataset record counts
         counts = {
             "LegalEntity": session.query(LegalEntity).count(),
             "BankAccount": session.query(BankAccount).count(),

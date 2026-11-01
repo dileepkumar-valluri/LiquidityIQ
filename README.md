@@ -48,6 +48,9 @@ LiquidityIQ/
 │   ├── generated/
 │   └── ground_truth/
 ├── docs/
+|   ├── database_schema.md
+│   ├── data_dictionary.md
+│   └── AI_PROMPT_HISTORY.md
 ├── scripts/
 ├── .env.example
 ├── .gitignore
@@ -59,7 +62,7 @@ LiquidityIQ/
 ### 1. Clone the repository
 
 ```bash
-git clone <YOUR_PUBLIC_GITHUB_REPOSITORY_URL>
+git clone https://github.com/dileepkumar-valluri/LiquidityIQ.git
 cd LiquidityIQ
 ```
 
@@ -139,7 +142,8 @@ python -m backend.app.services.edge_cases
 | CashFlowForecast | 1,200 |
 | **Total** | **2,504** |
 
-The current validation run reported **24 checks passed and 0 failures**.
+The latest verified validation run reported **28 checks passed and 0 failures**.
+Three bank accounts have negative calculated closing balances. These are reported as liquidity warnings, not validation failures.
 
 ## Forecast Scenarios
 
@@ -159,7 +163,9 @@ Daily cash positions are calculated using opening balances, ledger activity thro
 
 ## Reproducibility
 
-The starter generator uses the fixed seed `20261022`. The dataset generator and validation commands are provided above. Reproducibility across repeated runs and dataset scales should be verified before relying on generated exports.
+The synthetic data generator uses the fixed seed `20261022` and supports starter and baseline configurations.
+
+The currently verified local dataset uses starter-scale volumes. Reproducibility across repeated runs and dataset scales has not yet been fully verified. Do not assume that running the generator repeatedly against an existing database is safe.
 
 ## Project Status
 
