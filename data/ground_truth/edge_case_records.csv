@@ -1,0 +1,7 @@
+amount,calculated_closing_balance,case_id,cash_flow_a,cash_flow_b,cash_flow_id,currency,duplicate_occurrence,effective_date,expected_date,flow_type,forecast_cutoff_date,fx_rate_available,incorrect_total,opening_balance,posting_date,record_id,record_type,reported_closing_balance,reporting_currency,source_currency,target_currency,total_inflows,total_outflows,transaction_date,transaction_id
+,11500.0,EDGE-001,,,,INR,,,,,,,,10000.0,,ANOM-001,BALANCE_RECONCILIATION,12000.0,,,,2500.0,1000.0,,
+50000.0,,EDGE-002,,,,,,2026-11-01,,,,False,,,,ANOM-002,FX_CONVERSION,,,JPY,INR,,,,
+25000.0,,EDGE-003,,,CF-EDGE-003,INR,1,,2026-11-05,INFLOW,,,,,,ANOM-003,DUPLICATE_CASH_FLOW,,,,,,,,
+25000.0,,EDGE-003,,,CF-EDGE-003,INR,2,,2026-11-05,INFLOW,,,,,,ANOM-004,DUPLICATE_CASH_FLOW,,,,,,,,
+18000.0,,EDGE-004,,,,INR,,,,INFLOW,2026-10-31,,,,2026-11-02,ANOM-005,ACTUAL_AFTER_CUTOFF,,,,,,,2026-11-01,LED-EDGE-004
+,,EDGE-005,"{""amount"": 1000.0, ""currency"": ""USD""}","{""amount"": 1000.0, ""currency"": ""EUR""}",,,,,,,,,2000.0,,,ANOM-006,UNCONVERTED_CURRENCY,,INR,,,,,,
